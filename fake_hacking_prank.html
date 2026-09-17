@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Alert</title>
+<style>
+body{margin:0;background:#050505;color:#00ff66;font-family:monospace;display:flex;align-items:center;justify-content:center;height:100vh}
+.box{width:min(90%,650px);padding:28px;border:1px solid #00ff66;box-shadow:0 0 25px #00ff6644;background:#020702}
+h1{font-size:28px}
+#terminal{line-height:1.7;min-height:180px}
+.bar{height:18px;border:1px solid #00ff66;margin-top:18px}
+.fill{height:100%;width:0;background:#00ff66;transition:width .15s}
+#final{display:none;color:#fff;text-align:center;font-family:Arial,sans-serif}
+#final h1{color:#00ff66;font-size:42px}
+small{color:#aaa}
+</style>
+</head>
+<body>
+<div class="box">
+  <div id="hack">
+    <h1>⚠ SYSTEM ACCESS</h1>
+    <div id="terminal"></div>
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <p id="percent">0%</p>
+  </div>
+  <div id="final">
+    <h1>😂 PRANK LANG!</h1>
+    <p>Walang na-hack at walang kinuhang data.</p>
+    <small>Safe fake-hacking animation only.</small>
+  </div>
+</div>
+<script>
+const lines=[
+"Initializing secure connection...",
+"Scanning system...",
+"Bypassing firewall...",
+"Encrypting access channel...",
+"Downloading secret files...",
+"Finalizing access..."
+];
+let i=0, p=0;
+const term=document.getElementById("terminal");
+const fill=document.getElementById("fill");
+const pct=document.getElementById("percent");
+function run(){
+  if(i<lines.length){
+    term.innerHTML += "> "+lines[i]+"<br>";
+    i++;
+  }
+  p+=4;
+  fill.style.width=p+"%"; pct.textContent=p+"%";
+  if(p<100) setTimeout(run,180);
+  else setTimeout(()=>{
+    document.getElementById("hack").style.display="none";
+    document.getElementById("final").style.display="block";
+  },700);
+}
+run();
+</script>
+</body>
+</html>
